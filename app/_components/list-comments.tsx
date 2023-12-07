@@ -1,6 +1,9 @@
+'use client'
+
 import { User, Comment } from "@/typescript/comment";
 import { CommentItem } from "./comment-item";
 import { CommentForm } from "./comment-form";
+import { useEffect, useRef } from "react";
 
 interface ListCommentsProps {
   comments: Comment[]; 
@@ -10,6 +13,18 @@ export const ListComments = ({
   comments,
   user
 }: ListCommentsProps ) => {
+  const bottomRef = useRef<HTMLDivElement>(null)
+
+  const handleCommentAdded = () => {
+    if(bottomRef.current){
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  useEffect(() => {
+    handleCommentAdded()
+  }, [comments])
+
   return (
     <div className="
       px-4 py-6
@@ -30,7 +45,9 @@ export const ListComments = ({
       ))}
       <CommentForm 
         user={user}
+        onCommentAdded={handleCommentAdded}
       />
+      <div ref={bottomRef}></div>
     </div>
   )
 }

@@ -50,7 +50,7 @@ export const CommentItem = ({
             gap-3
             col-span-2
             sm:col-start-2
-            sm:col-end-10
+            sm:col-end-9
             sm:ml-1
           "
         >
@@ -127,10 +127,10 @@ export const CommentItem = ({
           font-700
           text-sm
           flex
-          sm:col-start-10
-          sm:col-end-13
           sm:row-start-1
           sm:row-end-2
+          sm:col-start-9
+          sm:col-end-13
         ">
           {!isAuthUserComment ? (
             <button className="flex items-center gap-2">
@@ -138,7 +138,7 @@ export const CommentItem = ({
               <span>Reply</span>
             </button>
           ):(
-            <div className="flex items-center sm:gap-7 font-500">
+            <div className="flex items-center gap-4 font-500">
               <button
                 className="
                   flex 

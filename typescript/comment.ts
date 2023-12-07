@@ -4,7 +4,7 @@ export interface Data {
 }
 
 export interface Comment {
-  id:          number;
+  id:          number | string;
   content:     string;
   createdAt:   string;
   score:       number;
