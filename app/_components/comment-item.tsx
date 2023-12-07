@@ -1,31 +1,30 @@
-import { Image as ImageType, User } from "@/typescript/comment";
-import { Comment } from "@/typescript/comment";
+import { Comment, User } from "@/typescript/comment";
 import { ImageProfile } from "@/components/image-profile";
 import Image from "next/image";
+import { rq } from "../libs/axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 
 interface CommentItemProps {
-  image: ImageType;
-  userName: string;
-  createdAt: string;
-  content: string;
-  score: number;
-  replies?: Comment[];
-  replyingTo?: string;
+  comment: Comment;
   user: User
 }
 
 export const CommentItem = ({
-  image,
-  userName,
-  createdAt,
-  content,
-  score,
-  replies,
-  replyingTo,
+  comment,
   user
 }: CommentItemProps) => {
-  const isAuthUserComment = user.username === userName;
+  const isAuthUserComment = user.username === comment.user.username;
+  const router = useRouter()
+
+  const deleteComment = (id: string) => {
+    rq.delete(`api/comments/${id}`)
+      .then(res => {
+        router.refresh()        
+      })
+      .catch(err => toast.error('Something went wrong'))
+  }
   return (
     <>
       <article
@@ -56,12 +55,12 @@ export const CommentItem = ({
         >
           <figure className="flex items-center">
             <ImageProfile 
-              src={image.png} 
+              src={comment.user.image.png} 
               alt="profile image"
             />
           </figure>
           <div className="flex gap-2 items-center">
-            <h2 className="font-rubik font-700 text-neutral-dark-blue">{userName}</h2>
+            <h2 className="font-rubik font-700 text-neutral-dark-blue">{comment.user.username}</h2>
             {isAuthUserComment && (
               <span className="
               bg-primary-moderate-blue
@@ -75,7 +74,7 @@ export const CommentItem = ({
               ">you</span>
             )}
           </div>
-          <span className="text-neutral-grayish-blue">{createdAt}</span>
+          <span className="text-neutral-grayish-blue">{comment.createdAt}</span>
         </header>
         <section className="
         text-neutral-grayish-blue
@@ -87,12 +86,12 @@ export const CommentItem = ({
           sm:ml-1
         ">
           <p>
-            {replyingTo && (
+            {comment.replyingTo && (
               <span className="text-primary-moderate-blue font-700 mr-1">
-                @{replyingTo}
+                @{comment.replyingTo}
               </span>
             )}
-            {content}
+            {comment.content}
           </p>
         </section>
         <section className="
@@ -117,7 +116,7 @@ export const CommentItem = ({
           sm:row-end-3
         ">
           <Image src="/images/icon-plus.svg" alt="Plus Icon" width={12} height={12} />
-          <p className="font-500">{score}</p>
+          <p className="font-500">{comment.score}</p>
           <Image src="/images/icon-minus.svg" alt="Minus Icon" width={12} height={12} />
         </section>
         <section className="
@@ -145,6 +144,7 @@ export const CommentItem = ({
                   gap-[.40rem] 
                   items-center
                   text-primary-soft-red"
+                  onClick={() => deleteComment(comment.id)}
               >
                 <Image src="/images/icon-delete.svg" alt="Delete Icon" width={14} height={14} />
                 <span>Delete</span>
@@ -166,16 +166,10 @@ export const CommentItem = ({
         sm:pl-6
         sm:ml-8
       ">
-        {replies && replies.map((reply) => (
+        {comment.replies && comment.replies.map((reply, index) => (
           <CommentItem 
             key={reply.id}
-            image={reply.user.image}
-            userName={reply.user.username}
-            createdAt={reply.createdAt}
-            content={reply.content}
-            score={reply.score}
-            replies={reply.replies}
-            replyingTo={reply.replyingTo}
+            comment={reply}
             user={user}
           />
         ))}

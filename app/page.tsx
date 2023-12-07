@@ -1,5 +1,5 @@
 import { Data } from "@/typescript/comment"
-import { ListComments } from "./_components/list-comments"
+import { CommentsList } from "./_components/comments-list"
 import { rq } from '@/app/libs/axios';
 
 
@@ -20,7 +20,7 @@ export default  async function Home() {
 
   return (
     <article className="bg-neutral-very-light-gray">
-      <ListComments comments={data.comments} user={data.currentUser} />
+      <CommentsList comments={data.comments} user={data.currentUser} />
     </article>
   )
 }

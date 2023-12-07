@@ -5,14 +5,14 @@ import { CommentItem } from "./comment-item";
 import { CommentForm } from "./comment-form";
 import { useEffect, useRef } from "react";
 
-interface ListCommentsProps {
+interface CommentListProps {
   comments: Comment[]; 
   user: User;
 }
-export const ListComments = ({
+export const CommentsList = ({
   comments,
   user
-}: ListCommentsProps ) => {
+}: CommentListProps ) => {
   const bottomRef = useRef<HTMLDivElement>(null)
 
   const handleCommentAdded = () => {
@@ -34,13 +34,8 @@ export const ListComments = ({
       {comments.map((comment) => (
         <CommentItem 
           key={comment.id}
-          image={comment.user.image}
-          userName={comment.user.username}
-          createdAt={comment.createdAt}
-          content={comment.content}
-          score={comment.score}
-          replies={comment.replies}
-          user={user}
+          comment={comment}
+          user={user} 
         />
       ))}
       <CommentForm 
