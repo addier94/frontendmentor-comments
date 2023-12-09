@@ -50,7 +50,7 @@
         },
         {
           "id": "4",
-          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the neIf you're still new, I'd recommend",
           "createdAt": "2 days ago",
           "score": 2,
           "replyingTo": "ramsesmiron",
@@ -63,6 +63,20 @@
           }
         }
       ]
+    },
+    {
+      "id": "9kx4hs0fcequt6fhndgh7j",
+      "content": "e more with this. Everything moves so fast and it always seems like everyone knows the",
+      "createdAt": "2 days ago",
+      "score": 0,
+      "user": {
+        "username": "juliusomo",
+        "image": {
+          "png": "/images/avatars/image-juliusomo.png",
+          "webp": "/images/avatars/image-juliusomo.webp"
+        }
+      },
+      "replies": []
     }
   ]
 }

@@ -116,8 +116,9 @@ export const CommentForm = ({
           px-8 
           py-[.66rem]
           rounded-md
+          hover:opacity-90
           hover:bg-primary-cyan-dark
-          transition-colors
+          transition
           duration-200
           border
           sm:px-6

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { rq } from "../libs/axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { CommentEditForm } from "./comment-edit-form";
 
 
 interface CommentItemProps {
@@ -15,6 +17,7 @@ export const CommentItem = ({
   comment,
   user
 }: CommentItemProps) => {
+  const [onEdit, setOnEdit] = useState(false)
   const isAuthUserComment = user.username === comment.user.username;
   const router = useRouter()
 
@@ -85,14 +88,26 @@ export const CommentItem = ({
           sm:col-end-13
           sm:ml-1
         ">
-          <p>
-            {comment.replyingTo && (
+          <div>
+            {(comment.replyingTo && !onEdit) && (
               <span className="text-primary-moderate-blue font-700 mr-1">
                 @{comment.replyingTo}
               </span>
             )}
-            {comment.content}
-          </p>
+
+            {onEdit ? (
+              <CommentEditForm 
+                setOnEdit={setOnEdit}
+                commentId={comment.id}
+                content={comment.content}
+                replyingTo={comment.replyingTo}
+              />
+            ) : (
+              <p>
+                {comment.content}
+              </p>
+            )}
+          </div>
         </section>
         <section className="
           flex 
@@ -149,9 +164,12 @@ export const CommentItem = ({
                 <Image src="/images/icon-delete.svg" alt="Delete Icon" width={14} height={14} />
                 <span>Delete</span>
               </button>
-              <button className="flex items-center gap-[.40rem]">
+              <button 
+                className="flex items-center gap-[.40rem]"
+                onClick={() => setOnEdit(!onEdit)}
+              >
                 <Image src="/images/icon-edit.svg" alt="Edit Icon" width={14} height={14} />
-                <span>Edit</span>
+                <span>{!onEdit ? 'Edit' : 'Close'}</span>
               </button>
             </div>
           )}

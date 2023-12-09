@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 import './globals.css'
-import ToasterContext from './app/ToasterContext'
+import ToasterContext from './context/ToasterContext'
 
 const rubik = Rubik({ subsets: ['latin'] })
 
