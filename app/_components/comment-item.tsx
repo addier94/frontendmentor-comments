@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CommentEditForm } from "./comment-edit-form";
+import { CommentReplyForm } from "./comment-reply-form";
 
 
 interface CommentItemProps {
@@ -17,7 +18,8 @@ export const CommentItem = ({
   comment,
   user
 }: CommentItemProps) => {
-  const [onEdit, setOnEdit] = useState(false)
+  const [onEdit, setOnEdit] = useState<boolean>(false)
+  const [onReply, setOnReply] = useState<boolean>(false)
   const isAuthUserComment = user.username === comment.user.username;
   const router = useRouter()
 
@@ -147,7 +149,10 @@ export const CommentItem = ({
           sm:col-end-13
         ">
           {!isAuthUserComment ? (
-            <button className="flex items-center gap-2">
+            <button 
+              className="flex items-center gap-2"
+              onClick={() => setOnReply(!onReply)}
+            >
               <Image src="/images/icon-reply.svg" alt="Reply Icon" width={14} height={14} />
               <span>Reply</span>
             </button>
@@ -173,7 +178,6 @@ export const CommentItem = ({
               </button>
             </div>
           )}
-
         </section>
       </article>
 
@@ -192,6 +196,17 @@ export const CommentItem = ({
           />
         ))}
       </div>
+
+      { onReply && (
+        <div className="mb-4">
+          <CommentReplyForm 
+            user={user}
+            commentId={comment.id}
+            replyingTo={comment.user.username}
+            onCommentAdded={() => setOnReply(false)}
+          />
+        </div>
+      )}
     </>
   )
 }

@@ -19,7 +19,22 @@
         },
         "username": "amyrobson"
       },
-      "replies": []
+      "replies": [
+        {
+          "id": "n2giy7nr7vysa1ngcp11",
+          "content": "dsafsdfsd",
+          "createdAt": "3 weeks ago",
+          "score": 0,
+          "user": {
+            "username": "juliusomo",
+            "image": {
+              "png": "/images/avatars/image-juliusomo.png",
+              "webp": "/images/avatars/image-juliusomo.webp"
+            }
+          },
+          "replyingTo": "amyrobson"
+        }
+      ]
     },
     {
       "id": "2",
@@ -61,6 +76,20 @@
             },
             "username": "juliusomo"
           }
+        },
+        {
+          "id": "5msqr4iv0c30469ai86vftu",
+          "content": "dfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+          "createdAt": "6 days ago",
+          "score": 0,
+          "user": {
+            "username": "juliusomo",
+            "image": {
+              "png": "/images/avatars/image-juliusomo.png",
+              "webp": "/images/avatars/image-juliusomo.webp"
+            }
+          },
+          "replyingTo": "ramsesmiron"
         }
       ]
     },

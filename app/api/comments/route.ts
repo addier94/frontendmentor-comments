@@ -67,8 +67,7 @@ export async function PUT(
     const jsonData = JSON.parse(readComments)
 
     // update the existing data with the new data
-    const commentsUpdated = updateCommentContent(commentId, content, jsonData.comments)
-    jsonData.comments = commentsUpdated
+    jsonData.comments = updateCommentContent(commentId, content, jsonData.comments)
 
     // Write the updated data to the data.json file
     await fs.writeFile(jsonDirectory, JSON.stringify(jsonData, null, 2))

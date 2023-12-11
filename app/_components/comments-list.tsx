@@ -38,6 +38,7 @@ export const CommentsList = ({
           user={user} 
         />
       ))}
+
       <CommentForm 
         user={user}
         onCommentAdded={handleCommentAdded}

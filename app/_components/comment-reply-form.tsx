@@ -1,49 +1,50 @@
-'use client'
-
 import { ImageProfile } from "@/components/image-profile";
 import { User } from "@/typescript/comment";
-import { use, useState } from "react";
-import { rq } from "../libs/axios";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useCommentDetail } from "../hook/useCommentDetail";
+import { useTextareaFocus } from "../hook/useTextareaFocus";
+import { rq } from "../libs/axios";
+import toast from "react-hot-toast";
 
-interface CommentFormProps {
+interface CommentReplyFormProps {
   user: User;
   onCommentAdded: () => void;
+  replyingTo: string;
+  commentId: string;
 }
-export const CommentForm = ({
+export const CommentReplyForm = ({
   user,
-  onCommentAdded
-}: CommentFormProps) => {
-  const [newComment, setNewComment] = useState('')
-  const commentDetail = useCommentDetail(newComment, user);
+  onCommentAdded,
+  replyingTo,
+  commentId
+}: CommentReplyFormProps) => {
+  const { textValue, setTextValue, textareaRef } = useTextareaFocus({
+    initialContent: `@${replyingTo}, `
+  })
+  const commentDetail = useCommentDetail(textValue, user);
 
   const router = useRouter()
 
-  const addComment = () => {
-    if(!newComment.trim()){
-      toast.error('Comment cannot be empty!')
-      return
-    }
+  const replyComment = () => {
+    const withVariation = {...commentDetail, replyingTo, commentId}
+    withVariation.content = withVariation.content.replace(/@\w+,\s*/, '')
 
-    rq.post('/api/comments', {...commentDetail, replies: []})
-    .then(res => {
-      setNewComment('')
-      router.refresh()
-      onCommentAdded()
-    })
-      .catch(err => toast.error('Error adding comment!'))
+    rq.post('/api/comments/replies', withVariation)
+      .then(res => {
+        setTextValue('')
+        router.refresh()
+        onCommentAdded()
+      })
+      .catch(err => toast.error('Error replying comment!'))
   }
-  
+
   const handleeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Check if the pressed key is Enter
     if(e.key === 'Enter' && !e.shiftKey){
       e.preventDefault()
-      addComment()
+      replyComment()
     }
   }
-
   return (
     <div className="
       grid
@@ -74,9 +75,10 @@ export const CommentForm = ({
         sm:col-start-2
         sm:col-end-11
       "
-      value={newComment}
-      onChange={(e) => setNewComment(e.target.value)}
+      value={textValue}
+      onChange={(e) => setTextValue(e.target.value)}
       onKeyDown={handleeyPress}
+      ref={textareaRef}
     />
     <figure className="
       self-center
@@ -119,7 +121,7 @@ export const CommentForm = ({
           border
           sm:px-6
         "
-        onClick={addComment}
+        onClick={replyComment}
       >
         SEND
       </button>

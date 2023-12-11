@@ -21,12 +21,10 @@ export const CommentEditForm = ({
   const router = useRouter()
 
   const handleUpdate = () => {
-    const usernamePattern = /@\w+,\s*/
-
-    const sanitizeTextValue = textValue.replace(usernamePattern, '')
+    const outOfUsername = textValue.replace(/@\w+,\s*/, '')
     rq.put('/api/comments', {
       commentId,
-      content: sanitizeTextValue
+      content: outOfUsername
     })
       .then(res => {
         setOnEdit(false)
@@ -42,25 +40,25 @@ export const CommentEditForm = ({
       handleUpdate()
     }
   }
-
+  
   return (
     <section>
       <textarea 
-        ref={textareaRef}
         placeholder="Add a comment..."
         className="
-          w-full
-          py-2
-          px-4
-          border
-          rounded-md
-          resize-none
-          focus:outline-none
-          focus:ring-2
-          focus:ring-neutral-500
-          focus:border-transparent
-          min-h-[6rem]
+        w-full
+        py-2
+        px-4
+        border
+        rounded-md
+        resize-none
+        focus:outline-none
+        focus:ring-2
+        focus:ring-neutral-500
+        focus:border-transparent
+        min-h-[6rem]
         "
+        ref={textareaRef}
         value={textValue}
         onChange={(e) => setTextValue(e.target.value)}
         onKeyDown={handleeyPress}
