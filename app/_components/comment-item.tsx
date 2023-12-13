@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CommentEditForm } from "./comment-edit-form";
 import { CommentReplyForm } from "./comment-reply-form";
+import { Score } from "./score";
 
 
 interface CommentItemProps {
@@ -132,9 +133,7 @@ export const CommentItem = ({
           sm:row-start-1
           sm:row-end-3
         ">
-          <Image src="/images/icon-plus.svg" alt="Plus Icon" width={12} height={12} />
-          <p className="font-500">{comment.score}</p>
-          <Image src="/images/icon-minus.svg" alt="Minus Icon" width={12} height={12} />
+          <Score score={comment.score} commentId={comment.id} userId={user.username} />
         </section>
         <section className="
           text-primary-moderate-blue

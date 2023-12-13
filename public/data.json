@@ -1,17 +1,10 @@
 {
-  "currentUser": {
-    "image": {
-      "png": "/images/avatars/image-juliusomo.png",
-      "webp": "/images/avatars/image-juliusomo.webp"
-    },
-    "username": "juliusomo"
-  },
   "comments": [
     {
       "id": "1",
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "1 month ago",
-      "score": 12,
+      "score": 15,
       "user": {
         "image": {
           "png": "/images/avatars/image-amyrobson.png",
@@ -21,9 +14,9 @@
       },
       "replies": [
         {
-          "id": "n2giy7nr7vysa1ngcp11",
-          "content": "dsafsdfsd",
-          "createdAt": "3 weeks ago",
+          "id": "rag4u3hikfp30bbk8j76pv",
+          "content": "sdfsds",
+          "createdAt": "4 months ago",
           "score": 0,
           "user": {
             "username": "juliusomo",
@@ -90,6 +83,34 @@
             }
           },
           "replyingTo": "ramsesmiron"
+        },
+        {
+          "id": "ahwh11mp747w0a0einbea",
+          "content": "sdfsdfsdwwww",
+          "createdAt": "2 weeks ago",
+          "score": 0,
+          "user": {
+            "username": "juliusomo",
+            "image": {
+              "png": "/images/avatars/image-juliusomo.png",
+              "webp": "/images/avatars/image-juliusomo.webp"
+            }
+          },
+          "replyingTo": "ramsesmiron"
+        },
+        {
+          "id": "ncor1sq2pzfdriwa9muge",
+          "content": "ddddddddddddddd ddddddddddddd dddddd dddddd ddddddddddddddddd ddddddddddddd ddddddddd dddddd dddddd dddddddddd dddddddddddddddd ",
+          "createdAt": "7 days ago",
+          "score": 0,
+          "user": {
+            "username": "juliusomo",
+            "image": {
+              "png": "/images/avatars/image-juliusomo.png",
+              "webp": "/images/avatars/image-juliusomo.webp"
+            }
+          },
+          "replyingTo": "maxblagun"
         }
       ]
     },
@@ -107,5 +128,12 @@
       },
       "replies": []
     }
-  ]
+  ],
+  "currentUser": {
+    "image": {
+      "png": "/images/avatars/image-juliusomo.png",
+      "webp": "/images/avatars/image-juliusomo.webp"
+    },
+    "username": "juliusomo"
+  }
 }

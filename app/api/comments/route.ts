@@ -1,24 +1,23 @@
-import { promises as fs } from 'fs'
-import path from 'path'
 import { NextResponse } from 'next/server'
 import { Comment } from '@/typescript/comment'
+import { File } from '@/app/helpers/manageFile'
 
+// Get all comments
 export async function GET(req: Request) {
   try {
     if (req.method !== 'GET') {
       return new NextResponse('Method Not Allowed', { status: 405 })
     }
-    const jsonDirectory = path.join(process.cwd(), 'public', 'data.json')
-    const readComments = await fs.readFile(jsonDirectory, 'utf-8')
-    const jsonData = JSON.parse(readComments)
+    const data = await File.getAllData()
 
-    return NextResponse.json(jsonData)
+    return NextResponse.json(data)
   } catch (error) {
     console.log('CANNOT_GET_COMMENTS', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
 
+// Add a new comment
 export async function POST(
   req: Request,
   ) {
@@ -29,18 +28,14 @@ export async function POST(
     // Parse the incoming request to get the data to be added
     const body = await req.json()
 
-    const jsonDirectory = path.join(process.cwd(), 'public', 'data.json')
-
     // Read the existing data from the data.json file
-    const readComments = await fs.readFile(jsonDirectory, 'utf-8') 
-    const jsonData = JSON.parse(readComments)
+    const data = await File.getAllData()
 
     // Add the new data to the existing data 
-    // jsonData.push(body)
-    jsonData.comments.push(body)
+    data.comments.push(body)
 
     // Write the updated data to the data.json file
-    await fs.writeFile(jsonDirectory, JSON.stringify(jsonData, null, 2))
+    await File.addAllData(data)
 
     return NextResponse.json({ message: 'success' })
   } catch (error) {
@@ -49,6 +44,7 @@ export async function POST(
   }
 }
 
+// Update a comment
 export async function PUT(
   req: Request
 ) {
@@ -60,17 +56,14 @@ export async function PUT(
     const body = await req.json() as { commentId: string, content: string }
     const { commentId, content } = body
 
-    const jsonDirectory = path.join(process.cwd(), 'public', 'data.json')
-
-    // Read the existing data from the data.json file
-    const readComments = await fs.readFile(jsonDirectory, 'utf-8') 
-    const jsonData = JSON.parse(readComments)
+    // const jsonDirectory = path.join(process.cwd(), 'public', 'data.json')
+    const data = await File.getAllData()
 
     // update the existing data with the new data
-    jsonData.comments = updateCommentContent(commentId, content, jsonData.comments)
+    data.comments = updateCommentContent(commentId, content, data.comments)
 
     // Write the updated data to the data.json file
-    await fs.writeFile(jsonDirectory, JSON.stringify(jsonData, null, 2))
+    await File.addAllData(data)
 
     return NextResponse.json({ message: 'success' })
   } catch (error) {
