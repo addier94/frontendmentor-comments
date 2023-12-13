@@ -3,7 +3,7 @@
 import { User, Comment } from "@/typescript/comment";
 import { CommentItem } from "./comment-item";
 import { CommentForm } from "./comment-form";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 interface CommentListProps {
   comments: Comment[]; 
@@ -14,16 +14,6 @@ export const CommentsList = ({
   user
 }: CommentListProps ) => {
   const bottomRef = useRef<HTMLDivElement>(null)
-
-  const handleCommentAdded = () => {
-    if(bottomRef.current){
-        bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  useEffect(() => {
-    handleCommentAdded()
-  }, [comments])
 
   return (
     <div className="
@@ -41,9 +31,7 @@ export const CommentsList = ({
 
       <CommentForm 
         user={user}
-        onCommentAdded={handleCommentAdded}
       />
-      <div ref={bottomRef}></div>
     </div>
   )
 }

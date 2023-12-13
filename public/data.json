@@ -4,7 +4,7 @@
       "id": "1",
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "1 month ago",
-      "score": 15,
+      "score": 14,
       "user": {
         "image": {
           "png": "/images/avatars/image-amyrobson.png",
@@ -12,22 +12,7 @@
         },
         "username": "amyrobson"
       },
-      "replies": [
-        {
-          "id": "rag4u3hikfp30bbk8j76pv",
-          "content": "sdfsds",
-          "createdAt": "4 months ago",
-          "score": 0,
-          "user": {
-            "username": "juliusomo",
-            "image": {
-              "png": "/images/avatars/image-juliusomo.png",
-              "webp": "/images/avatars/image-juliusomo.webp"
-            }
-          },
-          "replyingTo": "amyrobson"
-        }
-      ]
+      "replies": []
     },
     {
       "id": "2",
@@ -46,7 +31,7 @@
           "id": "3",
           "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
           "createdAt": "1 week ago",
-          "score": 4,
+          "score": 5,
           "replyingTo": "maxblagun",
           "user": {
             "image": {
@@ -57,23 +42,9 @@
           }
         },
         {
-          "id": "4",
-          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the neIf you're still new, I'd recommend",
-          "createdAt": "2 days ago",
-          "score": 2,
-          "replyingTo": "ramsesmiron",
-          "user": {
-            "image": {
-              "png": "/images/avatars/image-juliusomo.png",
-              "webp": "/images/avatars/image-juliusomo.webp"
-            },
-            "username": "juliusomo"
-          }
-        },
-        {
-          "id": "5msqr4iv0c30469ai86vftu",
-          "content": "dfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
-          "createdAt": "6 days ago",
+          "id": "arhepv0f4ywsarovbh8hr",
+          "content": "cfdss",
+          "createdAt": "4 days ago",
           "score": 0,
           "user": {
             "username": "juliusomo",
@@ -85,9 +56,9 @@
           "replyingTo": "ramsesmiron"
         },
         {
-          "id": "ahwh11mp747w0a0einbea",
-          "content": "sdfsdfsdwwww",
-          "createdAt": "2 weeks ago",
+          "id": "w9hcak1g0hcwxqksqoyaa",
+          "content": "",
+          "createdAt": "3 weeks ago",
           "score": 0,
           "user": {
             "username": "juliusomo",
@@ -97,27 +68,55 @@
             }
           },
           "replyingTo": "ramsesmiron"
-        },
-        {
-          "id": "ncor1sq2pzfdriwa9muge",
-          "content": "ddddddddddddddd ddddddddddddd dddddd dddddd ddddddddddddddddd ddddddddddddd ddddddddd dddddd dddddd dddddddddd dddddddddddddddd ",
-          "createdAt": "7 days ago",
-          "score": 0,
-          "user": {
-            "username": "juliusomo",
-            "image": {
-              "png": "/images/avatars/image-juliusomo.png",
-              "webp": "/images/avatars/image-juliusomo.webp"
-            }
-          },
-          "replyingTo": "maxblagun"
         }
       ]
     },
     {
-      "id": "9kx4hs0fcequt6fhndgh7j",
-      "content": "e more with this. Everything moves so fast and it always seems like everyone knows the",
-      "createdAt": "2 days ago",
+      "id": "awcjermqni7yuww9suko1n",
+      "content": "nice guys",
+      "createdAt": "12 months ago",
+      "score": 0,
+      "user": {
+        "username": "juliusomo",
+        "image": {
+          "png": "/images/avatars/image-juliusomo.png",
+          "webp": "/images/avatars/image-juliusomo.webp"
+        }
+      },
+      "replies": []
+    },
+    {
+      "id": "gtugm4853wlco6cpsvzrl",
+      "content": "come on fucker",
+      "createdAt": "6 days ago",
+      "score": 0,
+      "user": {
+        "username": "juliusomo",
+        "image": {
+          "png": "/images/avatars/image-juliusomo.png",
+          "webp": "/images/avatars/image-juliusomo.webp"
+        }
+      },
+      "replies": []
+    },
+    {
+      "id": "60jxmfd3df8ebne89ptcj6",
+      "content": "sdfsd",
+      "createdAt": "6 months ago",
+      "score": 0,
+      "user": {
+        "username": "juliusomo",
+        "image": {
+          "png": "/images/avatars/image-juliusomo.png",
+          "webp": "/images/avatars/image-juliusomo.webp"
+        }
+      },
+      "replies": []
+    },
+    {
+      "id": "06alzrpdnbtofgy43hx5ywo",
+      "content": "dsfsdtt",
+      "createdAt": "3 months ago",
       "score": 0,
       "user": {
         "username": "juliusomo",

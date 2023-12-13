@@ -42,6 +42,7 @@ export const Score = ({
     <>
       <Image 
         onClick={increaseScore} 
+        className="cursor-pointer"
         src="/images/icon-plus.svg" 
         alt="Plus Icon" 
         width={12} 
@@ -51,6 +52,7 @@ export const Score = ({
 
       <Image 
         onClick={decreaseScore} 
+        className="cursor-pointer"
         src="/images/icon-minus.svg" 
         alt="Minus Icon" width={12} height={12} />
     </>

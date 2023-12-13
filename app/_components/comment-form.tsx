@@ -1,39 +1,39 @@
-'use client'
-
 import { ImageProfile } from "@/components/image-profile";
 import { User } from "@/typescript/comment";
-import { use, useState } from "react";
 import { rq } from "../libs/axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useCommentDetail } from "../hook/useCommentDetail";
+import { useTextareaFocus } from '../hook/useTextareaFocus';
 
 interface CommentFormProps {
   user: User;
-  onCommentAdded: () => void;
+  // onCommentAdded: () => void;
 }
 export const CommentForm = ({
   user,
-  onCommentAdded
+  // onCommentAdded
 }: CommentFormProps) => {
-  const [newComment, setNewComment] = useState('')
-  const commentDetail = useCommentDetail(newComment, user);
+  const {textValue, setTextValue, textareaRef} = useTextareaFocus({initialContent: ''})
+  const commentDetail = useCommentDetail(textValue, user);
 
   const router = useRouter()
 
   const addComment = () => {
-    if(!newComment.trim()){
+    if(!textValue.trim()){
       toast.error('Comment cannot be empty!')
       return
     }
 
     rq.post('/api/comments', {...commentDetail, replies: []})
     .then(res => {
-      setNewComment('')
+      setTextValue('')
       router.refresh()
-      onCommentAdded()
+      delay()
     })
-      .catch(err => toast.error('Error adding comment!'))
+      .catch(err => {
+        toast.error(err?.response?.data || 'Something went wrong')
+      })
   }
   
   const handleeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -42,6 +42,20 @@ export const CommentForm = ({
       e.preventDefault()
       addComment()
     }
+  }
+
+  const delay = (ms: number = 300) => {
+    const timerId = setTimeout(() => {
+      scrollBottomHandler()
+    }, ms)
+    return () => clearTimeout(timerId)
+  }
+
+  const scrollBottomHandler = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth' 
+    });
   }
 
   return (
@@ -74,8 +88,8 @@ export const CommentForm = ({
         sm:col-start-2
         sm:col-end-11
       "
-      value={newComment}
-      onChange={(e) => setNewComment(e.target.value)}
+      value={textValue}
+      onChange={(e) => setTextValue(e.target.value)}
       onKeyDown={handleeyPress}
     />
     <figure className="
