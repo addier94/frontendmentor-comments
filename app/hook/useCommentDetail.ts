@@ -5,7 +5,8 @@ export const useCommentDetail = (newComment: string, user: User): Comment => {
   const commentDetail: Comment = {
     id: random.getRandomId(),
     content: newComment,
-    createdAt: random.getRandomTime(),
+    // createdAt: random.getRandomTime(),
+    createdAt: new Date().getTime(),
     score: 0,
     user: {
       username: user.username,

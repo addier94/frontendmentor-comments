@@ -6,7 +6,7 @@ export interface Data {
 export interface Comment {
   id:          string;
   content:     string;
-  createdAt:   string;
+  createdAt:   number;
   score:       number;
   user:        User;
   replies?:    Comment[];

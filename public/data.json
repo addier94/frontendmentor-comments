@@ -40,41 +40,13 @@
             },
             "username": "ramsesmiron"
           }
-        },
-        {
-          "id": "arhepv0f4ywsarovbh8hr",
-          "content": "cfdss",
-          "createdAt": "4 days ago",
-          "score": 0,
-          "user": {
-            "username": "juliusomo",
-            "image": {
-              "png": "/images/avatars/image-juliusomo.png",
-              "webp": "/images/avatars/image-juliusomo.webp"
-            }
-          },
-          "replyingTo": "ramsesmiron"
-        },
-        {
-          "id": "w9hcak1g0hcwxqksqoyaa",
-          "content": "",
-          "createdAt": "3 weeks ago",
-          "score": 0,
-          "user": {
-            "username": "juliusomo",
-            "image": {
-              "png": "/images/avatars/image-juliusomo.png",
-              "webp": "/images/avatars/image-juliusomo.webp"
-            }
-          },
-          "replyingTo": "ramsesmiron"
         }
       ]
     },
     {
-      "id": "awcjermqni7yuww9suko1n",
-      "content": "nice guys",
-      "createdAt": "12 months ago",
+      "id": "8jfyb95gy0kw5sx19ovcbd",
+      "content": "sdfasfs",
+      "createdAt": 1702506071602,
       "score": 0,
       "user": {
         "username": "juliusomo",
@@ -86,37 +58,9 @@
       "replies": []
     },
     {
-      "id": "gtugm4853wlco6cpsvzrl",
-      "content": "come on fucker",
-      "createdAt": "6 days ago",
-      "score": 0,
-      "user": {
-        "username": "juliusomo",
-        "image": {
-          "png": "/images/avatars/image-juliusomo.png",
-          "webp": "/images/avatars/image-juliusomo.webp"
-        }
-      },
-      "replies": []
-    },
-    {
-      "id": "60jxmfd3df8ebne89ptcj6",
-      "content": "sdfsd",
-      "createdAt": "6 months ago",
-      "score": 0,
-      "user": {
-        "username": "juliusomo",
-        "image": {
-          "png": "/images/avatars/image-juliusomo.png",
-          "webp": "/images/avatars/image-juliusomo.webp"
-        }
-      },
-      "replies": []
-    },
-    {
-      "id": "06alzrpdnbtofgy43hx5ywo",
-      "content": "dsfsdtt",
-      "createdAt": "3 months ago",
+      "id": "z2y07m3ozp88g53w1tymi",
+      "content": "nice job guys",
+      "createdAt": 1702506255973,
       "score": 0,
       "user": {
         "username": "juliusomo",

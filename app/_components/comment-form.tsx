@@ -8,11 +8,9 @@ import { useTextareaFocus } from '../hook/useTextareaFocus';
 
 interface CommentFormProps {
   user: User;
-  // onCommentAdded: () => void;
 }
 export const CommentForm = ({
   user,
-  // onCommentAdded
 }: CommentFormProps) => {
   const {textValue, setTextValue, textareaRef} = useTextareaFocus({initialContent: ''})
   const commentDetail = useCommentDetail(textValue, user);

@@ -8,6 +8,7 @@ import { useState } from "react";
 import { CommentEditForm } from "./comment-edit-form";
 import { CommentReplyForm } from "./comment-reply-form";
 import { Score } from "./score";
+import getTimeAgo from "../helpers/customTime";
 
 
 interface CommentItemProps {
@@ -80,7 +81,7 @@ export const CommentItem = ({
               ">you</span>
             )}
           </div>
-          <span className="text-neutral-grayish-blue">{comment.createdAt}</span>
+          <span className="text-neutral-grayish-blue">{getTimeAgo(comment.createdAt)}</span>
         </header>
         <section className="
         text-neutral-grayish-blue

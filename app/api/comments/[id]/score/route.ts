@@ -41,7 +41,7 @@ export async function PUT(
     const canDecreaseScore = comment.score - 1 === score && user_commentIds[userCommentKey] === 1 
 
     if(!canIncreaseScore && !canDecreaseScore) {
-      return new NextResponse('Invalid score update', { status: 403 })
+      return new NextResponse('You cannot score twice', { status: 403 })
     }
 
     if(canIncreaseScore) {
