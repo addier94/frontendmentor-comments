@@ -1,50 +1,68 @@
-import { ImageProfile } from "@/components/image-profile";
-import { User } from "@/typescript/comment";
 import { useRouter } from "next/navigation";
-import { useCommentDetail } from "../hook/useCommentDetail";
-import { useTextareaFocus } from "../hook/useTextareaFocus";
-import { rq } from "../libs/axios";
+
+import { rq } from "@/app/libs/axios";
 import toast from "react-hot-toast";
 
-interface CommentReplyFormProps {
+import { ImageProfile } from "@/app/components/image-profile";
+import { User } from "@/typescript/comment";
+import { useCommentDetail } from "@/app/hook/useCommentDetail";
+import { useTextareaFocus } from "@/app/hook/useTextareaFocus";
+import Button from '@/app/components/button';
+import { useState } from "react";
+
+interface CommentFormProps {
   user: User;
-  onCommentAdded: () => void;
-  replyingTo: string;
-  commentId: string;
 }
-export const CommentReplyForm = ({
+export const CommentForm = ({
   user,
-  onCommentAdded,
-  replyingTo,
-  commentId
-}: CommentReplyFormProps) => {
-  const { textValue, setTextValue, textareaRef } = useTextareaFocus({
-    initialContent: `@${replyingTo}, `
-  })
+}: CommentFormProps) => {
+  const {textValue, setTextValue, textareaRef} = useTextareaFocus({initialContent: ''})
   const commentDetail = useCommentDetail(textValue, user);
+  const [isLoading, setIsLoading] = useState(false)
 
   const router = useRouter()
 
-  const replyComment = () => {
-    const withVariation = {...commentDetail, replyingTo, commentId}
-    withVariation.content = withVariation.content.replace(/@\w+,\s*/, '')
+  const addComment = () => {
+    if(!textValue.trim()){
+      toast.error('Comment cannot be empty!')
+      return
+    }
 
-    rq.post('/api/comments/replies', withVariation)
-      .then(res => {
-        setTextValue('')
-        router.refresh()
-        onCommentAdded()
-      })
-      .catch(err => toast.error('Error replying comment!'))
+    setIsLoading(true)
+    rq.post('/api/comments', {...commentDetail, replies: []})
+    .then(res => {
+      setTextValue('')
+      router.refresh()
+      delay()
+    })
+    .catch(err => {
+      toast.error(err?.response?.data || 'Something went wrong')
+    })
+    .finally(() => setIsLoading(false))
   }
-
+  
   const handleeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Check if the pressed key is Enter
     if(e.key === 'Enter' && !e.shiftKey){
       e.preventDefault()
-      replyComment()
+      addComment()
     }
   }
+
+  const delay = (ms: number = 300) => {
+    const timerId = setTimeout(() => {
+      scrollBottomHandler()
+    }, ms)
+    return () => clearTimeout(timerId)
+  }
+
+  const scrollBottomHandler = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth' 
+    });
+  }
+
   return (
     <div className="
       grid
@@ -78,7 +96,6 @@ export const CommentReplyForm = ({
       value={textValue}
       onChange={(e) => setTextValue(e.target.value)}
       onKeyDown={handleeyPress}
-      ref={textareaRef}
     />
     <figure className="
       self-center
@@ -106,25 +123,12 @@ export const CommentReplyForm = ({
       sm:col-start-11
       sm:col-end-13
     ">
-      <button
-        className="
-          bg-primary-moderate-blue
-          text-neutral-white
-          font-500
-          px-8 
-          py-[.66rem]
-          rounded-md
-          hover:opacity-90
-          hover:bg-primary-cyan-dark
-          transition
-          duration-200
-          border
-          sm:px-6
-        "
-        onClick={replyComment}
+      <Button
+        onClick={addComment}
+        disabled={isLoading}
       >
         SEND
-      </button>
+      </Button>
     </div>
   </div>
   )

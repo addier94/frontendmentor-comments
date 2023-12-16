@@ -1,7 +1,8 @@
-import { Data } from "@/typescript/comment"
-import { CommentsList } from "./_components/comments-list"
 import { rq } from '@/app/libs/axios';
-import ErrorComponent from "@/components/error-component";
+
+import { Data } from "@/typescript/comment"
+import { CommentsList } from "./_components/comments-list";
+import ErrorComponent from "@/app/components/error-component";
 
 
 const fetchData = async ():Promise<Data> => {

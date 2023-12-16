@@ -1,14 +1,13 @@
-import { Comment, User } from "@/typescript/comment";
-import { ImageProfile } from "@/components/image-profile";
-import Image from "next/image";
-import { rq } from "../libs/axios";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
+
+import { Comment, User } from "@/typescript/comment";
+import { ImageProfile } from "@/app/components/image-profile";
 import { CommentEditForm } from "./comment-edit-form";
 import { CommentReplyForm } from "./comment-reply-form";
-import { Score } from "./score";
-import getTimeAgo from "../helpers/customTime";
+import { CommentsScore } from "./comments-score";
+import getTimeAgo from "@/app/helpers/customTime";
+import ConfirmModal from "./confirm-modal";
 
 
 interface CommentItemProps {
@@ -22,18 +21,16 @@ export const CommentItem = ({
 }: CommentItemProps) => {
   const [onEdit, setOnEdit] = useState<boolean>(false)
   const [onReply, setOnReply] = useState<boolean>(false)
+  const [confirmOpen, setConfirmOpen] = useState(false)
   const isAuthUserComment = user.username === comment.user.username;
-  const router = useRouter()
 
-  const deleteComment = (id: string) => {
-    rq.delete(`api/comments/${id}`)
-      .then(res => {
-        router.refresh()        
-      })
-      .catch(err => toast.error('Something went wrong'))
-  }
   return (
     <>
+      <ConfirmModal 
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        commentId={comment.id}
+      />
       <article
         className="
           bg-neutral-white
@@ -134,7 +131,7 @@ export const CommentItem = ({
           sm:row-start-1
           sm:row-end-3
         ">
-          <Score score={comment.score} commentId={comment.id} userId={user.username} />
+          <CommentsScore score={comment.score} commentId={comment.id} userId={user.username} />
         </section>
         <section className="
           text-primary-moderate-blue
@@ -164,7 +161,7 @@ export const CommentItem = ({
                   gap-[.40rem] 
                   items-center
                   text-primary-soft-red"
-                  onClick={() => deleteComment(comment.id)}
+                  onClick={() => setConfirmOpen(true)}
               >
                 <Image src="/images/icon-delete.svg" alt="Delete Icon" width={14} height={14} />
                 <span>Delete</span>

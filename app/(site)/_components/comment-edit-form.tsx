@@ -1,7 +1,10 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useTextareaFocus } from "../hook/useTextareaFocus";
-import { rq } from "../libs/axios";
-import { Dispatch, SetStateAction } from "react";
+
+import { rq } from "@/app/libs/axios";
+
+import { useTextareaFocus } from "@/app/hook/useTextareaFocus";
+import Button from "@/app/components/button";
 
 interface CommentEditFormProps {
   setOnEdit: Dispatch<SetStateAction<boolean>>;
@@ -15,6 +18,7 @@ export const CommentEditForm = ({
   content,
   replyingTo
 }: CommentEditFormProps) => {
+  const [isLoading, setIsLoading] = useState(false)
   const { textValue, setTextValue, textareaRef } = useTextareaFocus({
     initialContent: `${replyingTo ? `@${replyingTo}, ` : ''}${content}`
   })
@@ -22,15 +26,17 @@ export const CommentEditForm = ({
 
   const handleUpdate = () => {
     const outOfUsername = textValue.replace(/@\w+,\s*/, '')
+    setIsLoading(true)
     rq.put('/api/comments', {
       commentId,
       content: outOfUsername
     })
-      .then(res => {
+      .then(() => {
         setOnEdit(false)
         router.refresh()
       })
       .catch(err => console.log(err))
+      .finally(() => setIsLoading(false))
   }
 
   const handleeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -69,24 +75,12 @@ export const CommentEditForm = ({
         gap-2
         mt-2
       ">
-        <button 
-          type="button"
-          className="
-          bg-primary-moderate-blue
-          text-neutral-white
-            px-5
-            py-[.66rem]
-            rounded-md
-            hover:bg-opacity-90
-            transition
-            duration-200
-            border
-            font-500
-          "
+        <Button
           onClick={handleUpdate}
+          disabled={isLoading}
         >
           UPDATE
-        </button>
+        </Button>
       </div>
     </section>
   )

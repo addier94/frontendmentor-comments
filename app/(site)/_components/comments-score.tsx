@@ -1,20 +1,22 @@
 import Image from "next/image"
-import { rq } from "../libs/axios"
-import toast from "react-hot-toast"
-import { makeSlug } from "../libs/usernameToSlug"
 import { useRouter } from "next/navigation"
 
-interface ScoreProps {
+import { rq } from "@/app/libs/axios"
+import toast from "react-hot-toast"
+
+import { makeSlug } from "@/app/libs/usernameToSlug"
+
+interface CommentsScoreProps {
   score: number
   commentId: string
   userId: string
 }
 
-export const Score = ({
+export const CommentsScore = ({
   score,
   commentId,
   userId
-}: ScoreProps) => {
+}: CommentsScoreProps) => {
   const router = useRouter()
 
   const updateScore = (score: number) => {

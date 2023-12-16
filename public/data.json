@@ -11,7 +11,7 @@
       "id": "1",
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "1 month ago",
-      "score": 5,
+      "score": 4,
       "user": {
         "image": {
           "png": "/images/avatars/image-amyrobson.png",
@@ -25,7 +25,7 @@
       "id": "2",
       "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
       "createdAt": "2 weeks ago",
-      "score": 5,
+      "score": 6,
       "user": {
         "image": {
           "png": "/images/avatars/image-maxblagun.png",
@@ -49,9 +49,9 @@
           }
         },
         {
-          "id": "uhp7exj3wcaggllspt1dws",
-          "content": "sdasdfsdweewewewtttt",
-          "createdAt": 1702581089105,
+          "id": "h5dsvo5fbvbgdnhej5cp9t",
+          "content": "*#62#",
+          "createdAt": 1702687878546,
           "score": 0,
           "user": {
             "username": "juliusomo",
@@ -60,7 +60,7 @@
               "webp": "/images/avatars/image-juliusomo.webp"
             }
           },
-          "replyingTo": "maxblagun"
+          "replyingTo": "ramsesmiron"
         }
       ]
     },
@@ -79,9 +79,9 @@
       "replies": []
     },
     {
-      "id": "5nt0mgra006yzm543rjqwd",
-      "content": "sdfsdttyuew",
-      "createdAt": 1702577657716,
+      "id": "2u5ut89srvc9crjige8i3",
+      "content": "dsdsaDS",
+      "createdAt": 1702727329121,
       "score": 0,
       "user": {
         "username": "juliusomo",
@@ -93,9 +93,23 @@
       "replies": []
     },
     {
-      "id": "fl1vadwrx9rbyjmui2rmjs",
-      "content": "fsd",
-      "createdAt": 1702577748035,
+      "id": "rgiu3q5zm2eqeebejtduuc",
+      "content": "fucksgs sdfdsa",
+      "createdAt": 1702731642665,
+      "score": 0,
+      "user": {
+        "username": "juliusomo",
+        "image": {
+          "png": "/images/avatars/image-juliusomo.png",
+          "webp": "/images/avatars/image-juliusomo.webp"
+        }
+      },
+      "replies": []
+    },
+    {
+      "id": "9b95wt20z8bj5bsxc35z7",
+      "content": "dsafsdfdsaddddddddddddddddddd",
+      "createdAt": 1702731697518,
       "score": 0,
       "user": {
         "username": "juliusomo",

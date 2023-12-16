@@ -1,9 +1,10 @@
 'use client'
 
+import { useRef } from "react";
+
 import { User, Comment } from "@/typescript/comment";
 import { CommentItem } from "./comment-item";
 import { CommentForm } from "./comment-form";
-import { useRef } from "react";
 
 interface CommentListProps {
   comments: Comment[]; 
