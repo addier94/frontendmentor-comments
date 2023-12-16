@@ -137,7 +137,7 @@ export const CommentItem = ({
           text-primary-moderate-blue
           col-span-1
           justify-self-end
-          font-700
+          font-500
           text-sm
           flex
           sm:row-start-1
@@ -154,7 +154,7 @@ export const CommentItem = ({
               <span>Reply</span>
             </button>
           ):(
-            <div className="flex items-center gap-4 font-500">
+            <div className="flex items-center gap-4">
               <button
                 className="
                   flex 
